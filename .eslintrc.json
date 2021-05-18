@@ -1,0 +1,29 @@
+{
+  "extends": "es/node",
+  "rules": {
+    "@typescript-eslint/naming-convention": [
+      "error",
+      {
+        "selector": [ "variableLike", "memberLike" ],
+        "format": [ "strictCamelCase", "StrictPascalCase" ],
+        "filter": { "regex": "^release_id$", "match": false }
+      },
+      {
+        "selector": [ "typeLike" ],
+        "format": [ "StrictPascalCase" ]
+      },
+      {
+        "selector": [ "typeParameter" ],
+        "format": [ "StrictPascalCase" ],
+        "prefix": [ "T" ]
+      }
+    ],
+    "@typescript-eslint/no-floating-promises": "off",
+    "@typescript-eslint/no-implicit-any-catch": [
+      "error",
+      {
+        "allowExplicitAny": true
+      }
+    ]
+  }
+}
