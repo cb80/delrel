@@ -1,0 +1,38 @@
+{
+  "name": "delrel",
+  "description": "Delete a release by tag name. It supports GitHub Enterprise.",
+  "version": "0.0.0",
+  "author": "Chris Burkert (https://github.com/cb80)",
+  "license": "MIT",
+  "main": "lib/main.js",
+  "scripts": {
+    "build": "tsc",
+    "format": "prettier --write **/*.ts",
+    "format-check": "prettier --check **/*.ts",
+    "lint": "eslint src/**/*.ts",
+    "package": "ncc build --source-map --license licenses.txt",
+    "all": "npm run build && npm run format && npm run lint && npm run package"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cb80/delrel.git"
+  },
+  "keywords": [
+    "actions",
+    "node",
+    "setup"
+  ],
+  "dependencies": {
+    "@actions/core": "^1.2.7",
+    "@actions/github": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^15.0.3",
+    "@vercel/ncc": "^0.28.5",
+    "eslint": "^7.26.0",
+    "eslint-config-es": "^3.29.0",
+    "eslint-plugin-github": "^4.1.3",
+    "prettier": "^2.3.0",
+    "typescript": "^4.2.4"
+  }
+}

@@ -1,0 +1,17 @@
+name: 'Delete a release by tag name'
+description: 'Delete a release by tag name. It supports GitHub Enterprise.'
+author: 'Chris Burkert (https://github.com/cb80)'
+inputs:
+  tag:
+    description: 'Tag name'
+    required: true
+  token:
+    description: 'GitHub token, default: secrets.GITHUB_TOKEN'
+    required: false
+    default: ${{ github.token }}
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
+branding:
+  icon: 'box'
+  color: 'blue'

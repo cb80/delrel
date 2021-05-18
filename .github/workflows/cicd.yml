@@ -1,0 +1,40 @@
+---
+name: CI/CD
+
+on:
+  pull_request: {}
+  push: {}
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - run: npm install
+    - run: npm run all
+    - name: Update latest tag when pushing to main
+      if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+      run: |
+        git tag -f latest
+        git push -f origin latest
+    - name: Publish myself
+      if: ${{ github.event_name == 'push' }}
+      uses: cb80/pubrel@latest
+      with:
+        replace: latest
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - run: git tag -f ghatest
+    - run: git push -f origin ghatest
+    - name: create test release
+      uses: cb80/pubrel@latest
+      with:
+        ref: 'refs/tags/ghatest'
+        replace: ghatest
+    - name: remove test release
+      uses: ./
+      with:
+        tag: ghatest
