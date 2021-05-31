@@ -22,8 +22,7 @@ const run = async function (): Promise<void> {
       // No release found is a good thing
       core.debug(ex.message);
     }
-    core.debug(dat1);
-
+    core.debug(JSON.stringify(dat1));
     if (dat1 !== undefined) {
       core.info('Deleting release');
       const { data: resp } = await octokit.rest.repos.deleteRelease({
