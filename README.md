@@ -1,4 +1,5 @@
 ![CI/CD](https://github.com/cb80/delrel/workflows/CI/CD/badge.svg)
+[![](https://img.shields.io/badge/GitHub-Marketplace-blue)](https://github.com/marketplace/actions/delete-a-release-by-tag-name)
 
 # Description
 
