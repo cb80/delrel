@@ -28,7 +28,7 @@
   },
   "devDependencies": {
     "@types/node": "^16.9.4",
-    "@vercel/ncc": "^0.28.6",
+    "@vercel/ncc": "^0.31.1",
     "eslint": "^7.28.0",
     "eslint-config-es": "^3.29.9",
     "eslint-plugin-github": "^4.1.3",
