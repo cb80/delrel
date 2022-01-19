@@ -2,6 +2,7 @@
 name: CI/CD
 
 on:
+  pull_request: {}
   push:
     branches:
     - main
@@ -12,21 +13,30 @@ jobs:
   main:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - run: npm install
-    - run: npm run all
 
-    # real life test
-    - name: create tag for test release
+    - name: Check out code
+      uses: actions/checkout@v2
+
+    - name: Set up node16
+      uses: actions/setup-node@v2
+      with:
+        node-version: 16
+
+    - name: Run npm
+      run: npm install && npm run all
+
+    - name: Create tag for test release
       run: |
         git tag -f ghatest
         git push -f origin ghatest
-    - name: create test release without assets
+
+    - name: Create test release without assets
       uses: cb80/pubrel@latest
       with:
         ref: 'refs/tags/ghatest'
         replace: ghatest
-    - name: create test release with assets
+
+    - name: Create test release with assets
       uses: cb80/pubrel@latest
       with:
         ref: 'refs/tags/ghatest'
@@ -34,30 +44,35 @@ jobs:
         files: |
           README.md
           .git/index
-    - name: download assets
+
+    - name: Download assets
       uses: cb80/dlassets@latest
       with:
         tag: ghatest
         to: dl
-    - name: compare assets
+
+    - name: Compare assets
       run: |
         ls -al dl/
         cmp README.md dl/README.md
         cmp .git/index dl/index
-    - name: remove test release
+
+    - name: Remove test release
       uses: ./
       with:
         tag: ghatest
-    - name: remove tag for test release
+
+    - name: Remove tag for test release
       run: git push origin :ghatest
 
-    # publish on success
     - name: Update latest tag when pushing to main
-      if: ${{ github.ref == 'refs/heads/main' }}
+      if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
       run: |
         git tag -f latest
         git push -f origin latest
+
     - name: Publish myself
+      if: ${{ github.event_name == 'push' }}
       uses: cb80/pubrel@latest
       with:
         replace: latest
