@@ -1,21 +1,14 @@
 {
-  "extends": "es/node",
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint"],
   "rules": {
+    "dot-location": [ "error", "property" ],
     "@typescript-eslint/naming-convention": [
       "error",
       {
         "selector": [ "variableLike", "memberLike" ],
         "format": [ "strictCamelCase", "StrictPascalCase" ],
         "filter": { "regex": "^release_id$", "match": false }
-      },
-      {
-        "selector": [ "typeLike" ],
-        "format": [ "StrictPascalCase" ]
-      },
-      {
-        "selector": [ "typeParameter" ],
-        "format": [ "StrictPascalCase" ],
-        "prefix": [ "T" ]
       }
     ],
     "@typescript-eslint/no-floating-promises": "off",
