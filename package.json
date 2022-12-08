@@ -1,7 +1,7 @@
 {
   "name": "delrel",
   "description": "Delete a release by tag name. It supports GitHub Enterprise.",
-  "version": "0.12.0",
+  "version": "0.13.0",
   "author": "Chris Burkert (https://github.com/cb80)",
   "license": "MIT",
   "main": "lib/main.js",
@@ -27,11 +27,11 @@
     "@actions/github": "5.1.1"
   },
   "devDependencies": {
-    "@types/node": "18.11.4",
-    "@vercel/ncc": "0.34.0",
-    "eslint": "8.26.0",
-    "eslint-plugin-github": "4.4.0",
-    "prettier": "2.7.1",
-    "typescript": "4.8.4"
+    "@types/node": "18.11.11",
+    "@vercel/ncc": "0.36.0",
+    "eslint": "8.29.0",
+    "eslint-plugin-github": "4.6.0",
+    "prettier": "2.8.1",
+    "typescript": "4.9.4"
   }
 }
