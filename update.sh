@@ -9,4 +9,5 @@ cd /c
 npx --yes npm-check-updates -u
 npm install -g npm@latest
 npm install
+npm audit fix
 npm run all
