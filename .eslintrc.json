@@ -11,12 +11,6 @@
         "filter": { "regex": "^release_id$", "match": false }
       }
     ],
-    "@typescript-eslint/no-floating-promises": "off",
-    "@typescript-eslint/no-implicit-any-catch": [
-      "error",
-      {
-        "allowExplicitAny": true
-      }
-    ]
+    "@typescript-eslint/no-floating-promises": "off"
   }
 }

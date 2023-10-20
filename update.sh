@@ -3,7 +3,7 @@ set -e
 set -x
 
 # run this as follows to update all dependencies:
-# docker run -it -v $(pwd):/c node:16 /c/update.sh
+# docker run -it -v $(pwd):/c node:18 /c/update.sh
 
 cd /c
 npx --yes npm-check-updates -u
