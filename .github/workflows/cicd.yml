@@ -17,6 +17,11 @@ jobs:
     - name: Check out code
       uses: actions/checkout@v3
 
+    - name: Set up node20
+      uses: actions/setup-node@v3
+      with:
+        node-version: 20
+
     - name: Run npm
       run: npm install && npm run all
 
